@@ -21,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [NyanMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [NyanMyScene sceneWithSize:[UIScreen mainScreen].bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
