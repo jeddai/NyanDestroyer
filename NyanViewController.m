@@ -14,18 +14,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
-    // Configure the view.
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-    
-    // Create and configure the scene.
-    SKScene * scene = [NyanMyScene sceneWithSize:[UIScreen mainScreen].bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
+    if (!skView.scene) {
+        //skView.showsFPS = YES;
+        //skView.showsNodeCount = YES;
+        
+        SKScene * scene = [NyanMyScene sceneWithSize:skView.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        // Present the scene.
+        [skView presentScene:scene];
+    }
 }
 
 - (BOOL)shouldAutorotate
@@ -35,11 +40,7 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (void)didReceiveMemoryWarning
